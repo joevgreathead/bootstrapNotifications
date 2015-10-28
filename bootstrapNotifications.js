@@ -7,7 +7,7 @@
                     '<style>' +
                     '#bootstrap-notification-bin {' +
                     '    width: 20%;' +
-                    '    position: absolute;' +
+                    '    position: fixed;' +
                     '    color: #666;' +
                     '    right: 25px;' +
                     '    top: 10px;' +

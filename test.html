@@ -4,6 +4,36 @@
         <title>bootstrapNotification test</title>
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="bootstrapNotifications.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <script>
+            $(document).ready(function(){
+                $('#success-btn').click(function(){
+                    $.notify('This is a successful test!');
+                });
+                $('#warning-btn').click(function(){
+                    $.notify('This is a warning test!', 'warning');
+                });
+                $('#danger-btn').click(function(){
+                    $.notify('This is a danger test!', 'danger');
+                });
+                $('#info-btn').click(function(){
+                    $.notify('This is an info test!', 'info');
+                });
+            });
+        </script>
     </head>
-    <body></body>
+    <body class="col-xs-6">
+        <div class="row">
+            <input id="success-btn" class="btn btn-default form-control" value="Push for a 'success' alert." type="button" />
+        </div>
+        <div class="row">
+            <input id="warning-btn" class="btn btn-default form-control" value="Push for a 'warning' alert." type="button" />
+        </div>
+        <div class="row">
+            <input id="danger-btn" class="btn btn-default form-control" value="Push for a 'danger' alert." type="button" />
+        </div>
+        <div class="row">
+            <input id="info-btn" class="btn btn-default form-control" value="Push for an 'info' alert." type="button" />
+        </div>
+    </body>
 </html>
