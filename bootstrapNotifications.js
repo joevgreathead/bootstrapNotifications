@@ -17,6 +17,12 @@
                     '   margin-bottom: 10px;' +
                     '   z-index: 1000;' +
                     '}' +
+                    '#bootstrap-notification-bin > .note:hover {' +
+                    '   cursor: pointer;' +
+                    '   -moz-box-shadow:    inset 0 0 10px #ccc;' +
+                    '   -webkit-box-shadow: inset 0 0 10px #ccc;' +
+                    '   box-shadow:         inset 0 0 10px #ccc;' +
+                    '}' +
                     '</style>' +
                     '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"' +
                     'integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="' +
@@ -36,7 +42,16 @@
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
             }
             return text;
+        },
+        dismissNote = function(noteObj){
+            if(noteObj) {
+                noteObj.animate({'opacity': '0.01'}).slideUp(500, function () { $(this).remove() });
+            }
         };
+
+    $(document).delegate('#bootstrap-notification-bin > .note', 'click', function(){
+        dismissNote($(this));
+    });
 
     /*
      * success - green
@@ -60,16 +75,13 @@
         var token = makeToken();
         $('#bootstrap-notification-bin').append(
             '<div class="row note alert alert-' + status + ' alert-dismissible" id="' + token + '">' +
-            '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-            '<span aria-hidden="true">&times;</span>' +
-            '</button>' +
             '<div>' +
             text +
             '</div>' +
             '</div>'
         );
         setTimeout(function(){
-            $('#' + token).animate({'opacity': '0.01'}).slideUp(500, function(){ $(this).remove() });
+            dismissNote($('#' + token));
         }, dismissTime);
         return this;
     };
