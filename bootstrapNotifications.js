@@ -24,10 +24,7 @@
                     '   -webkit-box-shadow: inset 0 0 10px #ccc;' +
                     '   box-shadow:         inset 0 0 10px #ccc;' +
                     '}' +
-                    '</style>' +
-                    '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"' +
-                    'integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="' +
-                    'crossorigin="anonymous">'
+                    '</style>'
                 );
                 $('body').prepend('<div id="bootstrap-notification-bin"></div>');
             }
