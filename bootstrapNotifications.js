@@ -11,6 +11,7 @@
                     '    color: #666;' +
                     '    right: 25px;' +
                     '    top: 10px;' +
+                    '    z-index: 1000;' +
                     '}' +
                     '#bootstrap-notification-bin > .note {' +
                     '   position: relative;' +
