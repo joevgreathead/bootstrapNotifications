@@ -46,7 +46,8 @@
                 noteObj.animate({'opacity': '0.01'}).slideUp(500, function () { $(this).remove() });
             }
         },
-        enabled = true;
+        enabled = true,
+        consoleOnly = false;
 
     $(document).delegate('#bootstrap-notification-bin > .note', 'click', function(){
         dismissNote($(this));
@@ -74,6 +75,12 @@
         if(!dismissTime){
             dismissTime = 5000;
         }
+        if(consoleOnly){
+            if(console && console.log && (typeof console.log === 'function')){
+                console.log('|:: notify.js :: -- [', new Date(), '] -- ', text);
+            }
+            return this;
+        }
         var token = makeToken();
         $('#bootstrap-notification-bin').append(
             '<div class="row note alert alert-' + status + ' alert-dismissible" id="' + token + '">' +
@@ -94,6 +101,16 @@
     
     $.notify.enable = function(){
         enabled = true;
+    };
+    
+    $.notify.enableConsoleOnly = function(){
+        enabled = true;
+        consoleOnly = true;
+    };
+    
+    $.notify.disableConsoleOnly = function(){
+        enabled = true;
+        consoleOnly = true;
     };
 
 })(jQuery);
