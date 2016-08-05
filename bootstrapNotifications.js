@@ -45,7 +45,8 @@
             if(noteObj) {
                 noteObj.animate({'opacity': '0.01'}).slideUp(500, function () { $(this).remove() });
             }
-        };
+        },
+        enabled = true;
 
     $(document).delegate('#bootstrap-notification-bin > .note', 'click', function(){
         dismissNote($(this));
@@ -58,6 +59,9 @@
      * danger - red
      * */
     $.notify = function(text, status, dismissTime){
+        if(!enabled){
+            return this;
+        }
         if(!initialized){
             init();
         }
@@ -82,6 +86,14 @@
             dismissNote($('#' + token));
         }, dismissTime);
         return this;
+    };
+    
+    $.notify.disable = function(){
+        enabled = false;
+    };
+    
+    $.notify.enable = function(){
+        enabled = true;
     };
 
 })(jQuery);
